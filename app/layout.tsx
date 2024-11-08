@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Digislol365",
-  description: "Digislol365 software development company",
+  description: "Digislol365 software development ",
 };
 
 export default function RootLayout({
