@@ -1,33 +1,43 @@
 "use client";
-import AnimatedButton from "@/components/AnimatedButton";
 import HeroSection from "@/components/HeroSection";
-import { MenuIcon } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import FloatingButton from "@/components/FloatingButton";
+import Sidebar from "@/components/Sidebar";
+import WhoWeAre from "@/components/WhoWeAre";
+import ServicesSolutions from "@/components/ServiceSolutions";
+import WhatWeDo from "@/components/WhatWeDo";
+import OurNetwork from "@/components/OurNetwork";
+import SuccessStories from "@/components/SuccessStories";
+import ReviewSection from "@/components/ReviewSection";
+import { ProfileCard } from "@/components/OurExperts";
+import Footer from "@/components/Footer";
 
 export default function Home() {
-  const { state, toggleTheme } = useTheme();
+  const { state } = useTheme();
+
   return (
-    <div className="max-h-[100vh]">
-      <button
-        onClick={toggleTheme}
-        className="p-2 rounded-md transition-colors duration-300 focus:outline-none"
-      >
-        {state.theme === "dark" ? "🌙 Dark Mode" : "☀️ Light Mode"}
-      </button>
+    <div
+      className={`${
+        state.theme === "dark" ? "dark" : ""
+      } max-h-[100vh] transition-all duration-500 ease-in-out`}
+    >
+      <FloatingButton />
+
       <div className="flex">
-        <div className="bg-black w-[8%]">
-          <div>logo</div>
-          <div>
-            <MenuIcon color="white" />
-          </div>
-          <div>
-            <button>sdf</button>
-          </div>
-        </div>
-        <div className=" w-[92%]">
-          <div>
-            <HeroSection />
-          </div>
+        {/* Sidebar Section */}
+        <Sidebar />
+
+        {/* Main Content Section */}
+        <div className="w-[92%] ml-[8%] bg-background dark:bg-foreground text-foreground dark:text-background transition-all duration-500 ease-in-out ">
+          <HeroSection />
+          <WhoWeAre />
+          <ServicesSolutions />
+          <WhatWeDo />
+          <OurNetwork />
+          <SuccessStories />
+          <ReviewSection />
+          <ProfileCard />
+          <Footer />
         </div>
       </div>
     </div>
