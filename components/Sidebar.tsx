@@ -2,7 +2,7 @@ import { useTheme } from "@/src/context/ThemeContext";
 import { MenuIcon } from "lucide-react";
 import React from "react";
 
-function Sidebar(props) {
+function Sidebar() {
   const { state } = useTheme();
   return (
     <div className="w-[8%] flex flex-col justify-around fixed top-0 left-0 h-full bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-500 ease-in-out items-center">
