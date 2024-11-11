@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import HeroVideoDialog from "./ui/hero-video-dialog";
+import React from "react";
+// import HeroVideoDialog from "./ui/hero-video-dialog";
 
 const WhoWeAre: React.FC = () => {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  //   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  const handleVideoClick = () => {
-    setIsVideoPlaying(true);
-  };
+  //   const handleVideoClick = () => {
+  //     setIsVideoPlaying(true);
+  //   };
 
   return (
     <section className="flex flex-col md:flex-row items-center p-8 bg-background text-foreground">
