@@ -1,22 +1,90 @@
+import { useState } from "react";
+import { MenuIcon, XIcon } from "lucide-react";
 import { useTheme } from "@/src/context/ThemeContext";
-import { MenuIcon } from "lucide-react";
-import React from "react";
+import RotatingButton from "./RotatingButton";
 
-function Sidebar() {
+const Sidebar = () => {
   const { state } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
-    <div className="w-[8%] flex flex-col justify-around fixed top-0 left-0 h-full bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-500 ease-in-out items-center">
-      <div className="mb-4 text-xl">Logo</div>
-      <div className="mb-4">
-        <MenuIcon color={state.theme === "dark" ? "white" : "black"} />
-      </div>
-      <div>
+    <>
+      {/* Sidebar Button */}
+      <div className="w-[8%] flex flex-col justify-around fixed top-0 left-0 h-full bg-background dark:bg-card text-foreground dark:text-card-foreground transition-all duration-500 ease-in-out items-center z-50">
+        <div className="mb-4 text-xl">Logo</div>
+        <button onClick={toggleMenu} className="mb-4">
+          {isOpen ? (
+            <XIcon color={state.theme === "dark" ? "white" : "black"} />
+          ) : (
+            <MenuIcon color={state.theme === "dark" ? "white" : "black"} />
+          )}
+        </button>
         <button className="bg-muted text-muted-foreground dark:bg-accent dark:text-accent-foreground rounded">
-          Action
+          <RotatingButton />
         </button>
       </div>
-    </div>
+
+      {/* Full-Screen Menu */}
+      <div
+        className={`fixed inset-0 bg-background dark:bg-card text-foreground dark:text-card-foreground transform ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-500 ease-in-out z-40`}
+      >
+        {/* Close Menu Button */}
+        <button
+          onClick={toggleMenu}
+          className="absolute top-4 right-4 text-3xl focus:outline-none"
+        >
+          <XIcon />
+        </button>
+
+        {/* Menu Content */}
+        <div className="flex flex-col justify-center items-center h-full space-y-8">
+          <ul className="text-3xl font-semibold space-y-6">
+            <li className="group">
+              <button className="hover:text-buttoncolorhover focus:outline-none">
+                Home
+              </button>
+            </li>
+            <li className="group relative">
+              <button className="hover:text-buttoncolorhover focus:outline-none">
+                Services
+              </button>
+              <ul className="mt-4 ml-4 space-y-2 hidden group-hover:block">
+                <li>
+                  <button className="hover:text-gray-300">Consulting</button>
+                </li>
+                <li>
+                  <button className="hover:text-gray-300">Design</button>
+                </li>
+                <li>
+                  <button className="hover:text-gray-300">Development</button>
+                </li>
+              </ul>
+            </li>
+            <li className="group relative">
+              <button className="hover:text-buttoncolorhover focus:outline-none">
+                About
+              </button>
+              <ul className="mt-4 ml-4 space-y-2 hidden group-hover:block">
+                <li>
+                  <button className="hover:text-gray-300">Team</button>
+                </li>
+                <li>
+                  <button className="hover:text-gray-300">Company</button>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <button className="hover:text-buttoncolorhover">Contact</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default Sidebar;

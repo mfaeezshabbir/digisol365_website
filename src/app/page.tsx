@@ -19,26 +19,25 @@ export default function Home() {
     <div
       className={`${
         state.theme === "dark" ? "dark" : ""
-      } max-h-[100vh] transition-all duration-500 ease-in-out`}
+      } max-h-[100vh] transition-all duration-500 ease-in-out flex  flex-col lg:row`}
     >
       <FloatingButton />
-
-      <div className="flex">
+      <div className="">
         {/* Sidebar Section */}
-        <Sidebar />
+        {window.innerWidth > 900 && <Sidebar />}
+      </div>
 
-        {/* Main Content Section */}
-        <div className="w-[92%] ml-[8%] bg-background dark:bg-foreground text-foreground dark:text-background transition-all duration-500 ease-in-out ">
-          <HeroSection />
-          <WhoWeAre />
-          <ServicesSolutions />
-          <WhatWeDo />
-          <OurNetwork />
-          <SuccessStories />
-          <ReviewSection />
-          <ProfileCard />
-          <Footer />
-        </div>
+      {/* Main Content Section */}
+      <div className="w-[100%] md:w-[92%] md:ml-[8%] bg-background dark:bg-foreground text-foreground dark:text-background transition-all duration-500 ease-in-out ">
+        <HeroSection />
+        <WhoWeAre />
+        <ServicesSolutions />
+        <WhatWeDo />
+        <OurNetwork />
+        <SuccessStories />
+        <ReviewSection />
+        <ProfileCard />
+        <Footer />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useTheme } from "@/src/context/ThemeContext";
@@ -5,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function FloatingButton() {
   const { state, toggleTheme } = useTheme();
-  const [position, setPosition] = useState({ x: 20, y: 20 });
+  const [position, setPosition] = useState({ x: 100, y: 20 });
   const [isDragging, setIsDragging] = useState(false);
 
   // Track mouse position
