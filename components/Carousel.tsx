@@ -1,3 +1,4 @@
+import { a } from "framer-motion/client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -17,7 +18,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative h-[300px] w-[400px] overflow-hidden">
+    <div className="relative md:h-[300px] md:w-[400px] overflow-hidden h-[200px] w-[350px]">
       {images.map((src, index) => (
         <div
           key={index}
@@ -25,8 +26,10 @@ const Carousel = () => {
             index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
         >
-          <img
+          <Image
             src={src}
+            width={400}
+            height={400}
             alt={`Slide ${index}`}
             className="w-full h-full object-cover"
           />

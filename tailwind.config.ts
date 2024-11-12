@@ -17,6 +17,7 @@ export default {
         "font-col": "gray",
         "heading-col": "white",
         buttoncolor: "rgba(64, 243, 124, 0.911)",
+        buttoncolorhover: "rgba(39, 194, 88)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
