@@ -41,16 +41,24 @@ export default function FloatingButton() {
     };
   }, [isDragging]);
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // or a loading spinner
+  }
+
   return (
     <button
       onClick={toggleTheme}
       onMouseDown={handleMouseDown}
       style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
       className={`fixed z-50 p-2 rounded-full transition-colors duration-300 focus:outline-none 
-        ${
-          state.theme === "dark" ? "bg-white text-black" : "bg-black text-white"
-        } 
-        cursor-pointer shadow-lg`}
+      ${state.theme === "dark" ? "bg-white text-black" : "bg-black text-white"} 
+      cursor-pointer shadow-lg`}
     >
       {state.theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode"}
     </button>
