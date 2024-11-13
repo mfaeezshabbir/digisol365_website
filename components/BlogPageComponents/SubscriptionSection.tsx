@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-function SubscriptionSection(props) {
+function SubscriptionSection() {
   return (
     <section className="max-w-4xl mx-auto py-16 px-4 sm:px-8 md:py-20">
       <div className="relative bg-white text-white p-8 sm:p-10 md:p-12 rounded-xl shadow-lg overflow-hidden">
